@@ -27,90 +27,61 @@
     <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon">
     <title>John Fitzgerald Kennedy | Panel de administrador</title>
     <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar .navbar-expand-lg. fixed-top s">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon "></span>
-                </button>
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="src/images/logo.svg" alt="" width="70" height="94">John F. Kennedy</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house bi-ul-r"></i>Inicio</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down bi-ul-r"></i>
-                                        Especialidades
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear bi-ul-r"></i>Electromecánica</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-motherboard bi-ul-r"></i>Informática</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="./src/views/Biblioteca/biblioteca.html"><i class="bi bi-laptop bi-ul-r"></i>Programación</a></li>
-                                    </ul>
-                                </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-camera bi-ul-r"></i>Galería</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-bank bi-ul-r"></i>Historia</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
+    <nav>
+        <div class="logo">
+            <i class="bx bx-menu menu-icon"></i>
+        </div>
+        <div class="sidebar">
+            <div class="logo">
+                <i class="bx bx-menu menu-icon"></i>
+                <span class="logo-name">Dashboard</span>
+            </div>
+            <div class="sidebar-content">
+                <ul class="lists">
+                    <li class="list">
+                        <a href="../../../index.php" class="nav-link">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="link">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class='bx bx-file-blank icon'></i>
+                            <span class="link">Pdfs</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class='bx bx-chat icon'></i>
+                            <span class="link">Foro</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="bottom-cotent">
+                    <li class="list">
+                        <a href="../../../logout.php" class="nav-link">
+                            <i class="bx bx-log-out icon"></i>
+                            <span class="link">Cerrar sesión</span>
+                        </a>
+                    </li>
                 </div>
             </div>
-        </nav>
-        <div class="menu">
-            <ul>
-                <li><a href="../../../index.php"><i class="bi bi-house bi-ul-r"></i>Inicio</a></li>
-                <li class="specialties"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Especialidades</a>
-                    <ul class="submenu animate__animated animate__fadeIn">
-                        <li><a href="#"><i class="bi bi-gear bi-ul-r"></i>Electromecánica</a></li>
-                        <li><a href="#"><i class="bi bi-motherboard bi-ul-r"></i>Informática</a></li>
-                        <li><a href="#"><i class="bi bi-laptop bi-ul-r"></i>Programación</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a></li>
-                <li><a href="#"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
-                <li><a href="./src/views/Biblioteca/biblioteca.html"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a></li>
-                <li class="school"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Escuela</a>
-                    <ul class="submenu animate__animated animate__fadeIn">
-                        <li><a href="#"><i class="bi bi-camera bi-ul-r"></i>Galería</a></li>
-                        <li><a href="#"><i class="bi bi-bank bi-ul-r"></i>Historia</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a></li>
-                    <?php if(!empty($user)): ?>
-                        <li><a href="./src/views/admin/panel.php">Panel de administrador</a></li>
-                    <?php else: ?>
-                        <li><a href="./src/views/login/login.php"><i class="bi bi-info-circle"></i></a>
-                    <?php endif; ?>
-                </li>
-            </ul>
         </div>
-    </header>
+    </nav>
+    <div class="lottie-player">
+        <lottie-player src="https://lottie.host/8e1e9d82-659b-44c9-9685-61f99eb732c2/g4rqvM2Bp0.json" background="#ffffff" speed="1" style="width: 300px; height: 300px" loop autoplay direction="1" mode="normal"></lottie-player>
+        <span>Vaya al panel lateral para acceder a las funcionalidades de administrador</span>
+    </div>
     <script src="../../js/header.js"></script>
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
