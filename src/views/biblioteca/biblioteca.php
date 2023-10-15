@@ -1,7 +1,8 @@
-<?php 
+<?php
     session_start();
-
-    require 'db.php';
+    error_reporting(E_ALL);
+ini_set('display_errors', '1');
+    require '../../../db.php';
 
     if(isset($_SESSION['user_id'])){
         $records = $conn->prepare('SELECT id, username, password from usuarios where id = :id');
@@ -14,21 +15,25 @@
         if(count($results) > 0){
             $user = $results;
         }
-    }
+    }    
+    $sql = "SELECT * FROM pdfs";
+    $stmt = $conn->query($sql);
+    $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon">
-    <title>John Fitzgerald Kennedy | EEST N5</title>
+    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon">
+    <title>John Fitzgerald Kennedy | Ver PDFs</title>
+    <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="src/styles/footer.css">
-    <link rel="stylesheet" href="src/styles/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 </head>
 <body>
     <header>
@@ -109,119 +114,113 @@
             </ul>
         </div>
     </header>
-    <main class="main">
-        <section class="hero">
-            <div class="left-section">
-                <div class="info">
-                    <span>Bienvenido a</span>
-                    <h2>EEST N5 <br>JOHN F KENNEDY</br></h2>
-                    <p>Somos una institución educativa comprometida con la excelencia académica y 
-                        la formación integral de nuestros estudiantes en las áreas de programación, informática y 
-                        electromecánica.
-                    </p>
-                </div>
-            </div>
-            <div class="rigth-section">
-                <img src="./src/images/logo copia.svg" alt="Logo">
-            </div>
-        </section>
-        <section class="hero-mobile">
-            <div class="hero-mobile__info">
-                <span>Bienvenido a</span>
-                <h2>EEST N5 <br>JOHN F KENNEDY</br></h2>
-                <img src="./src/images/logo copia.svg" alt="">
-            </div>
-        </section>
-    </main>
-    <section class="specialties-section">
-        <div class="container-cards">
-            <div>
-                <h2 class="specialties-title">Especialidades</h2>
-            </div>
-            <div class="contain">
-                <div class="box">
-                    <figure>
-                        <i class="bi bi-gear-fill"></i>
-                    </figure>
-                    <h3>Electromecánica</h3>
-                    <p>En nuestra orientación de Electromecánica, los estudiantes adquieren habilidades esenciales para trabajar con sistemas eléctricos y mecánicos.</p>
-                </div>
-                <div class="box">
-                    <figure>
-                        <i class="bi bi-motherboard-fill"></i>
-                    </figure>
-                    <h3>Informática</h3>
-                    <p>Nuestra orientación en Informática te sumerge en el emocionante mundo de la tecnología. Aprenderás a programar, administrar redes y comprender la ciberseguridad.</p>
-                </div>
-                <div class="box">
-                    <figure>
-                        <i class="bi bi-laptop"></i>
-                    </figure>
-                    <h3>Programación</h3>
-                    <p>En nuestra orientación en programación, los estudiantes exploran el emocionante mundo de la codificación y el desarrollo de software.</p>
-                </div>
+    <nav class="sidebar">
+        <div class="wrap">
+            <div class="search">
+                <input type="text" id="searchTerm" class="searchTerm" placeholder="Buscar...">
+                <button type="button" id="searchButton" class="searchButton">
+                    <i class="bi bi-search"></i>
+                </button>
             </div>
         </div>
-    </section>
-    <section class="imagen">  
-    </section>
-    <section class="info__cards">
-        <div class="card">
-            <div class="card__title">
-                <h2>Entérese de las últimas noticias.</h2>
-                <p class="list">✅ Informese de las novedades de la escuela.</p>
-                <p class="list">✅ Conecte con la comunidad escolar.</p>
-                <p class="list">✅ Aprenda sobre temas relevantes.</p>
-                <p class="list">✅ Participe en la vida escolar.</p>
-                <button class="noticias">Ir a últimas noticias.</button>
-            </div>
+        <div>
+            <ul class="lists">
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">1° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">2° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">3° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">4° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">5° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">6° año</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a class="nav-link" href="#">
+                        <span class="link">7° año</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="card">
-            <div class="card__title">
-                <h2>¿Está pensando inscribirse?</h2>
-                <p class="list">✅ Prepárese para el futuro.</p>
-                <p class="list">✅ Desarrolle su potencial.</p>
-                <p class="list">✅ Conecte con otros.</p>
-                <p class="list">✅ Ambiente positivo y acogedor.</p>
-                <button class="noticias">Realice la preinscripción.</button>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer__container">
-            <div class="footer__box">
-                <figure class="footer__contimg">
-                    <img class="footer__img" src="./src/images/logo.png">
-                </figure>
-            </div>
-            <div class="footer__box">
-                <h2 class="footer__h2">Redes Sociales</h2>
-                <ul class="footer__ul">
-                    <li class="footer__1er-item"><a href="https://www.facebook.com/profile.php?id=100000755543895" target="_blank">Facebook</a></li>
-                    <li class="footer__1er-item"><a href="https://www.instagram.com/escuelatecnica5lanus/?next=%2F" target="_blank">Instagram</a></li>
-                    <li class="footer__1er-item"><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzBzDMLffdnFrgKFlGmqBpmkfHbDkljwwWdmxXZnVbXXJRNLxTzbDCktZJPdmXlwMdFXWxH" target="_blank">E-mail</a></li>
-                </ul>
-            </div>
-            <div class="footer__box">
-                <h2 class="footer__h2">Qué Estudiar</h2>
-                <ul class="footer__ul">
-                    <li class="footer__1er-item"><a href="Especialidades/programacion/programacion.html" target="_blank">Programación</a></li>
-                    <li class="footer__1er-item"><a href="https://www.instagram.com/escuelatecnica5lanus/?next=%2F" target="_blank">Informatica</a></li>
-                    <li class="footer__1er-item"><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzBzDMLffdnFrgKFlGmqBpmkfHbDkljwwWdmxXZnVbXXJRNLxTzbDCktZJPdmXlwMdFXWxH" target="_blank">Electromecánica</a></li>
-                </ul>
-            </div>
-            <div class="footer__box">
-                <h2 class="footer__h2">Contacto</h2>
-                <ul class="footer__ul">
-                    <li class="footer__2do-item"><a href="#">(+54) 9 11 4241-8547</a></li>
-                    <li class="footer__2do-item"><a href="#">4240-5026</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-    <script src="./src/js/vanilla-tilt.js"></script>
-    <script src="./src/js/header.js"></script>
-    <script src="script.js"></script>
+    </nav>
+    <div class="lottie-player"></div>
+    <div id="pdfLinks" class="pdf-links">
+        <?php
+            $sql = "SELECT * FROM pdfs";
+            $stmt = $conn->query($sql);
+            $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);                         
+            foreach ($pdfs as $pdf) {
+                $onlyName = $pdf['name'];
+                $pdfPath = 'view_pdf.php?pdf_name=' . $pdf['name'];
+                echo '<div class="container">';
+                echo "<a href='$pdfPath' class='aPDFS'>$onlyName";
+                if ($pdf['image'] !== null) {
+                    $imageData = $pdf['image'];
+                    $imageType = 'image/png';
+                    if ($imageType === 'image/jpeg' || $imageType === 'image/png') {
+                        echo '<img src="data:' . $imageType . ';base64,' . base64_encode($imageData) . '" class="img" alt="Imagen">';
+                    }
+                }else{
+                    echo "<img src='../../images/pdf.png' class='img' alt='PDF Icon'>";
+                }
+                echo '</a>';
+                echo '</div>';
+            }
+        ?>
+    </div>
+    
+    <script>
+        const pdfs = <?php echo json_encode($pdfs); ?>;
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchText = document.getElementById('searchTerm').value.toUpperCase();
+            const pdfLinksContainer = document.getElementById('pdfLinks');
+            while (pdfLinksContainer.firstChild) {
+                pdfLinksContainer.removeChild(pdfLinksContainer.firstChild);
+            }
+                pdfs.forEach(pdf => {
+                    const onlyName = pdf.name;
+                    const pdfPath = 'view_pdf.php?pdf_name=' + pdf.name;
+                        if (onlyName.includes(searchText)) {
+                            const codeHTML = `
+                                <div class="container">
+                                    <a href="${pdfPath}" class="aPDFS">
+                                        ${onlyName}
+                                        <img src="../../images/pdf.png" class="img" alt="PDF Icon">
+                                    </a>
+                                </div>`;
+                            pdfLinksContainer.innerHTML += codeHTML;
+                            document.querySelector('.lottie-player').innerHTML = '';
+                        } else {
+                            codeHTML = `
+                                    <dotlottie-player src="https://lottie.host/72984e55-a4d3-4f5d-930e-d1a672588134/v161dJOcOB.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay></dotlottie-player>
+                                    <p>Lo siento, no se ha podido encontrar el PDF indicado. Pruebe otro nombre.</p>`;
+                                document.querySelector('.lottie-player').innerHTML += codeHTML;
+                            pdfLinksContainer.innerHTML = '';
+                        }
+                    });
+                })                                                             
+    </script>                                                                                                                                                                                                                                    
+    <script src="../../js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
