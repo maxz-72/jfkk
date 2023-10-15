@@ -1,7 +1,5 @@
 <?php
     session_start();
-    error_reporting(E_ALL);
-ini_set('display_errors', '1');
     require '../../../db.php';
 
     if(isset($_SESSION['user_id'])){
@@ -15,10 +13,24 @@ ini_set('display_errors', '1');
         if(count($results) > 0){
             $user = $results;
         }
-    }    
-    $sql = "SELECT * FROM pdfs";
+    }        
+    $sql = "SELECT id, name, grade, file, image FROM pdfs";
     $stmt = $conn->query($sql);
-    $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);    
+    $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($pdfs) > 0) {
+        foreach ($pdfs as &$pdf) {
+            if ($pdf['file'] !== null) {
+                $pdf['file'] = base64_encode($pdf['file']);
+            }
+            if ($pdf['image'] !== null) {
+                $pdf['image'] = base64_encode($pdf['image']);
+            }
+        }
+        $pdfsJson = json_encode($pdfs);
+    } else {
+        $pdfsJson = '[]';
+    }                                                                                       
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +133,7 @@ ini_set('display_errors', '1');
                 <button type="button" id="searchButton" class="searchButton">
                     <i class="bi bi-search"></i>
                 </button>
-            </div>
+                    </div>
         </div>
         <div>
             <ul class="lists">
@@ -190,22 +202,26 @@ ini_set('display_errors', '1');
     </div>
     
     <script>
-        const pdfs = <?php echo json_encode($pdfs); ?>;
         document.getElementById('searchButton').addEventListener('click', function() {
             const searchText = document.getElementById('searchTerm').value.toUpperCase();
             const pdfLinksContainer = document.getElementById('pdfLinks');
             while (pdfLinksContainer.firstChild) {
                 pdfLinksContainer.removeChild(pdfLinksContainer.firstChild);
             }
+            const pdfs = <?php echo $pdfsJson; ?>;
                 pdfs.forEach(pdf => {
                     const onlyName = pdf.name;
+                    const image = pdf.image
                     const pdfPath = 'view_pdf.php?pdf_name=' + pdf.name;
                         if (onlyName.includes(searchText)) {
+                            const extension = image.split('.').pop().toLowerCase();
+                            const imageType = extension === 'jpg' || extension === 'jpeg' ? 'image/jpeg' :
+                                extension === 'png' ? 'image/png' : 'otra';
                             const codeHTML = `
                                 <div class="container">
                                     <a href="${pdfPath}" class="aPDFS">
                                         ${onlyName}
-                                        <img src="../../images/pdf.png" class="img" alt="PDF Icon">
+                                        <img src="data:${imageType};base64,${image}" class="img" alt="PDF Icon">
                                     </a>
                                 </div>`;
                             pdfLinksContainer.innerHTML += codeHTML;
@@ -218,7 +234,7 @@ ini_set('display_errors', '1');
                             pdfLinksContainer.innerHTML = '';
                         }
                     });
-                })                                                             
+                })                                          
     </script>                                                                                                                                                                                                                                    
     <script src="../../js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
