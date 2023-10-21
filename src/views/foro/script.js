@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     notice_container.style.display = 'none';
 
     let searchInput = document.querySelector('.searchTerm');
-    // let xhr = new XMLHttpRequest();
     show_news()
 
     searchInput.addEventListener('keyup', function () {
@@ -38,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h2 class="card__title">${new_s.name}</h2>
                             <p class="card__description">${new_s.description}</p>
                             ${new_s.permissions ? ` <button class="btn-borrar" data-id="${new_s.id}">Borrar</button>
-                                                    <button class="btn-editar" data-id="${new_s.id}">Editar</button>` : ''}
+                                                    <a href="handlers/edit_news.php">
+                                                        <button class="btn-editar" data-id="${new_s.id}">Editar</button>
+                                                    </a>`  : ''}
                         </div>`
                     ).join('');
 
@@ -64,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.text())
             .then(result => {
-                console.log(result);
                 show_news();
             })
             .catch(error => {

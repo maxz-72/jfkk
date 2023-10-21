@@ -1,6 +1,5 @@
 <?php
     require '../../../../db.php';
-    var_dump($_POST);
 
     if (isset($_POST['id'])){
         $id = $_POST['id'];
