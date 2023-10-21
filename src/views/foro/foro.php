@@ -91,7 +91,7 @@
                     </ul>
                 </li>
                 <li><a href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a></li>
-                <li><a href="#"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
+                <li><a href="foro.php"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
                 <li><a href="./src/views/biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a></li>
                 <li class="school"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Escuela</a>
                     <ul class="submenu animate__animated animate__fadeIn">
@@ -101,9 +101,9 @@
                 </li>
                 <li><a href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a></li>
                     <?php if(!empty($user)): ?>
-                        <li><a href="./src/views/admin/panel.php">Panel de administrador</a></li>
+                        <li><a href="../admin/panel.php">Panel de administrador</a></li>
                     <?php else: ?>
-                        <li><a href="./src/views/login/login.php"><i class="bi bi-info-circle"></i></a>
+                        <li><a href="../login/login.php"><i class="bi bi-info-circle"></i></a>
                     <?php endif; ?>
                 </li>
             </ul>

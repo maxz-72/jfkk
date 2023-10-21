@@ -54,8 +54,8 @@
                             <span class="link">Pdfs</span>
                         </a>
                     </li>
-                    <li class="./admin_views/forum_handle/forum_handle.php">
-                        <a href="#" class="nav-link">
+                    <li class="list">
+                        <a href="./admin_views/forum_handle/forum_handle.php" class="nav-link">
                             <i class='bx bx-chat icon'></i>
                             <span class="link">Foro</span>
                         </a>
