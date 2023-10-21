@@ -1,6 +1,22 @@
 <?php
+    session_start();
+
     require '../../../../db.php';
 
+    if(isset($_SESSION['user_id'])){
+        $records = $conn->prepare('SELECT id, username, password from usuarios where id = :id');
+        $records->bindParam(':id', $_SESSION['user_id']);
+        $records->execute();
+        $results = $records->fetch(PDO::FETCH_ASSOC);
+
+        $user = null;
+
+        if(count($results) > 0){
+            $user = $results;
+        }
+    }
+
+    $permissions = !empty($user);
     $query = "SELECT * FROM foro";
     $stmt = $conn->prepare($query);
 
@@ -10,7 +26,8 @@
             $json[] = array(
                 'name' => $row['name'],
                 'description' => $row['description'],
-                'id' => $row['id']
+                'id' => $row['id'],
+                'permissions' => $permissions
             );
         }
         $jsonstring = json_encode($json);

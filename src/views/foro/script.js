@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let searchInput = document.querySelector('.searchTerm');
     let xhr = new XMLHttpRequest();
-    console.log(show_news())
+    show_news()
 
     searchInput.addEventListener('keyup', function() {
         if(searchInput.value){
@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             template += `<div class="cards__container">
                                             <h2 class="card__title">${new_s.name}</h2>
                                             <p class="card__description">${new_s.description}</p>
+                                            ${new_s.permissions ? ` <button class="btn-borrar" data-id="${new_s.id}">Borrar</button>
+                                                                    <button class="btn-editar" data-id="${new_s.id}">Editar</button>` : ''}
                                         </div>
                                         `;
                         });
@@ -61,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     template += `<div class="cards__container">
                                     <h2 class="card__title">${new_s.name}</h2>
                                     <p class="card__description">${new_s.description}</p>
+                                    ${new_s.permissions ? ` <button class="btn-borrar" data-id="${new_s.id}">Borrar</button>
+                                                            <button class="btn-editar" data-id="${new_s.id}">Editar</button>` : ''}
                                 </div>
                                 `;
                 })
@@ -69,5 +73,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         xhr.send()
-    } 
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('btn-borrar')) {
+            const id = e.target.getAttribute('data-id');
+
+            xhr.open('POST', 
+                    'handlers/news_delete.php',
+                    true
+                    );
+            xhr.setRequestHeader('Content-Type',
+                                'application/x-www-form-urlencoded'
+                                );
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    show_news();
+                }
+            };
+            const data = new FormData();
+            data.append('id', id);
+            console.log(data.get('id'))
+            xhr.send(data);
+        }
+    });
 })
