@@ -1,14 +1,12 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
     require '../../../../db.php';
+    var_dump($_POST);
 
-    if(isset($_POST['id'])) {
+    if (isset($_POST['id'])){
         $id = $_POST['id'];
         $query = "DELETE FROM foro WHERE id = :id";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);  
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
@@ -16,7 +14,7 @@
         } else {
             echo "Failed to delete task.";
         }
-    }else{
+    } else {
         echo "No task selected";
-    }                                                               
+    }
 ?>
