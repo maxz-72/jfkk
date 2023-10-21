@@ -1,0 +1,28 @@
+.form__container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    display: flex;
+    padding: 50px;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    background: #2f54f8;
+}
+.form-group{
+    width: 300px;
+}
+label, input, textarea{
+    display: block;
+    width: 100%;
+    resize: none;
+}
+input, textarea{
+    margin-bottom: 20px;
+    padding: 5px;
+    outline: none;
+    border: 2px solid #000;
+    background: #fff;
+    box-shadow: 2px 2px 0px #000;
+}

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     require '../../../../../db.php';
 
     session_start();
@@ -93,7 +90,7 @@ error_reporting(E_ALL);
                 </ul>
                 <div class="bottom-cotent">
                     <li class="list">
-                        <a href="../../../logout.php" class="nav-link">
+                        <a href="../../../../../logout.php" class="nav-link">
                             <i class="bx bx-log-out icon"></i>
                             <span class="link">Cerrar sesión</span>
                         </a>

@@ -14,23 +14,6 @@
             $user = $results;
         }
     }        
-    $sql = "SELECT id, name, grade, file, image FROM pdfs";
-    $stmt = $conn->query($sql);
-    $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (count($pdfs) > 0) {
-        foreach ($pdfs as &$pdf) {
-            if ($pdf['file'] !== null) {
-                $pdf['file'] = base64_encode($pdf['file']);
-            }
-            if ($pdf['image'] !== null) {
-                $pdf['image'] = base64_encode($pdf['image']);
-            }
-        }
-        $pdfsJson = json_encode($pdfs);
-    } else {
-        $pdfsJson = '[]';
-    }                                                                                       
 ?>
 
 <!DOCTYPE html>
@@ -177,65 +160,7 @@
     </nav>
     <div class="lottie-player"></div>
     <div id="pdfLinks" class="pdf-links">
-        <?php
-            $sql = "SELECT * FROM pdfs";
-            $stmt = $conn->query($sql);
-            $pdfs = $stmt->fetchAll(PDO::FETCH_ASSOC);                         
-            foreach ($pdfs as $pdf) {
-                $onlyName = $pdf['name'];
-                $pdfPath = 'view_pdf.php?pdf_name=' . $pdf['name'];
-                echo '<div class="container">';
-                echo "<a href='$pdfPath' class='aPDFS'>$onlyName";
-                if ($pdf['image'] !== null) {
-                    $imageData = $pdf['image'];
-                    $imageType = 'image/png';
-                    if ($imageType === 'image/jpeg' || $imageType === 'image/png') {
-                        echo '<img src="data:' . $imageType . ';base64,' . base64_encode($imageData) . '" class="img" alt="Imagen">';
-                    }
-                }else{
-                    echo "<img src='../../images/pdf.png' class='img' alt='PDF Icon'>";
-                }
-                echo '</a>';
-                echo '</div>';
-            }
-        ?>
-    </div>
-    
-    <script>
-        document.getElementById('searchButton').addEventListener('click', function() {
-            const searchText = document.getElementById('searchTerm').value.toUpperCase();
-            const pdfLinksContainer = document.getElementById('pdfLinks');
-            while (pdfLinksContainer.firstChild) {
-                pdfLinksContainer.removeChild(pdfLinksContainer.firstChild);
-            }
-            const pdfs = <?php echo $pdfsJson; ?>;
-                pdfs.forEach(pdf => {
-                    const onlyName = pdf.name;
-                    const image = pdf.image
-                    const pdfPath = 'view_pdf.php?pdf_name=' + pdf.name;
-                        if (onlyName.includes(searchText)) {
-                            const extension = image.split('.').pop().toLowerCase();
-                            const imageType = extension === 'jpg' || extension === 'jpeg' ? 'image/jpeg' :
-                                extension === 'png' ? 'image/png' : 'otra';
-                            const codeHTML = `
-                                <div class="container">
-                                    <a href="${pdfPath}" class="aPDFS">
-                                        ${onlyName}
-                                        <img src="data:${imageType};base64,${image}" class="img" alt="PDF Icon">
-                                    </a>
-                                </div>`;
-                            pdfLinksContainer.innerHTML += codeHTML;
-                            document.querySelector('.lottie-player').innerHTML = '';
-                        } else {
-                            codeHTML = `
-                                    <dotlottie-player src="https://lottie.host/72984e55-a4d3-4f5d-930e-d1a672588134/v161dJOcOB.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay></dotlottie-player>
-                                    <p>Lo siento, no se ha podido encontrar el PDF indicado. Pruebe otro nombre.</p>`;
-                                document.querySelector('.lottie-player').innerHTML += codeHTML;
-                            pdfLinksContainer.innerHTML = '';
-                        }
-                    });
-                })                                          
-    </script>                                                                                                                                                                                                                                    
+    </div>                                                                                                                                                                                                                                 
     <script src="../../js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

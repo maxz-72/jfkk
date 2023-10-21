@@ -4,27 +4,20 @@
     require '../../../db.php';
 
     if(!empty($_POST['username'])  && !empty($_POST['password'])){
-        $records = $conn->prepare('SELECT * from usuarios where username = :username');
+        $records = $conn->prepare('SELECT id, username, password from usuarios where username = :username');
         $records->bindParam(':username', $_POST['username']);
         $records->execute();
         $results = $records->fetch(PDO::FETCH_ASSOC);
 
         $message = '';
-        $storedPassword = "administrador";
-        $hashedPassword = password_hash($storedPassword, PASSWORD_DEFAULT);
 
-        if ($results !== false) {
-            if(count($results) > 0 && password_verify($_POST['password'], $hashedPassword)){
-                $_SESSION['user_id'] = $results['id'];
-                header("Location: ../../../index.php");
-            }else{
-                $message = 'Lo siento, credenciales incorrectas, verifique los datos';
-            }    
+        if(count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
+            $_SESSION['user_id'] = $results['id'];
+            header("Location: ../../../index.php");
         }else{
-            $message = 'Usuario no encontrado';
+            $message = 'Lo siento, credenciales incorrectas, verifique los datos';
         }
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
