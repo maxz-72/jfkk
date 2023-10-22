@@ -96,11 +96,6 @@ header{
     height: 100%;
     object-fit: contain;
 }
-/*.pagination{
+form{
     display: flex;
-    justify-content: center;
-    left: 250px;
-    position: absolute;
-    bottom: 15px;
-    width: calc(100% - 250px);
-}*/
+}

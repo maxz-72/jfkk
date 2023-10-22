@@ -112,55 +112,29 @@
     <nav class="sidebar">
         <div class="wrap">
             <div class="search">
-                <input type="text" id="searchTerm" class="searchTerm" placeholder="Buscar...">
-                <button type="button" id="searchButton" class="searchButton">
-                    <i class="bi bi-search"></i>
-                </button>
-                    </div>
-        </div>
-        <div>
-            <ul class="lists">
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">1° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">2° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">3° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">4° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">5° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">6° año</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a class="nav-link" href="#">
-                        <span class="link">7° año</span>
-                    </a>
-                </li>
-            </ul>
+                <form action="" method="post">
+                    <input type="text" name="searchTerm" class="searchTerm" placeholder="Buscar...">
+                    <button type="submit" id="searchButton" class="searchButton">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+            </div>
         </div>
     </nav>
     <div class="lottie-player"></div>
+    <dialog id="mainModal">
+    <button class="cerrar-modal">x</button>
+        <form action="handlers/edit_pdf.php" method="post">
+            <input type="number" name="id" id="id" style="display: none">
+            <label for="name">Nombre del pdf:</label>
+            <input type="text" name="name">
+            <input type="submit" value="Actualizar datos">
+        </form>
+    </dialog>
     <div id="pdfLinks" class="pdf-links">
-    </div>                                                                                                                                                                                                                                 
+    </div>
+    <script src="script.js"></script>                                                                                                                                                                                           
     <script src="../../js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

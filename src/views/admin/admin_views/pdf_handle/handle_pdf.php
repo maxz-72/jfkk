@@ -19,30 +19,27 @@
         exit();
     }
 
-    if (!empty($_POST['name']) && !empty($_POST['grade']) && isset($_FILES['pdf']) && isset($_FILES['image'])) {
-        $name = strtoupper($_POST['name']);
-        $grade = $_POST['grade'];
-        $pdfFile = $_FILES['pdf']; // Cambiado de $file a $pdfFile
-        $imageFile = $_FILES['image']; // Cambiado de $image a $imageFile
-    
-        if ($pdfFile['error'] === 0 && $imageFile['error'] === 0) { // Cambiado de $file a $pdfFile y $image a $imageFile
-            $pdfContent = file_get_contents($pdfFile['tmp_name']);
-            $imageContent = file_get_contents($imageFile['tmp_name']); // Cambiado de $image a $imageFile
-    
-            $sql = "INSERT INTO pdfs (name, file, grade, image) VALUES (:name, :file, :grade, :image)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':file', $pdfContent, PDO::PARAM_LOB);
-            $stmt->bindParam(':grade', $grade);
-            $stmt->bindParam(':image', $imageContent, PDO::PARAM_LOB);
-    
-            if ($stmt->execute()) {
-                $message = 'PDF enviado correctamente';
-            } else {
-                $message = 'Error al enviar PDF';
-            }
+    if (isset($_FILES['pdf']) && !empty($_POST['name'])){
+        $nombreArchivo = $_FILES['pdf']['name'];
+        $rutaTemporal = $_FILES['pdf']['tmp_name'];
+        $rutaDestino = '../../../biblioteca/pdfs/' . $nombreArchivo;
+        $ruta_fija = 'pdfs/' . $nombreArchivo;
+
+        if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
+            echo "Archivo subido con éxito.";
         } else {
-            $message = 'Error al subir PDF';
+            echo "Error al subir el archivo.";
+        }
+
+        $sql = "INSERT INTO archivos_pdf (name, ruta_pdf) VALUES (:name, :ruta_pdf)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':name', $_POST['name']);
+        $stmt->bindParam(':ruta_pdf', $ruta_fija);
+
+        if($stmt->execute()){
+            $message = 'Pdf enviado correctamente';
+        }else{
+            $message = 'Lo siento, hubo un problema al enviar el pdf';
         }
     }
 ?>
@@ -103,12 +100,8 @@
         <form action="handle_pdf.php" method="post" enctype="multipart/form-data">
             <label for="name">Nombre del PDF:</label>
             <input type="text" name="name" placeholder="Nombre del PDF">
-            <label for="image">Suba una imagen a la vez.</label>
-            <input type="file" name="image" accept="image/*">
             <label for="pdf">Suba un pdf a la vez.*</label>
             <input type="file" name="pdf" accept=".pdf">    
-            <label for="grade">Indique a que año (grado) pertenece el PDF</label>
-            <input type="number" name="grade" placeholder="Grado">                  
             <?php if(!empty($message)): ?>
                 <p class="text-info"> <?= $message ?></p>
             <?php endif; ?>
