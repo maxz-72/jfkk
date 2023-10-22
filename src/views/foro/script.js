@@ -37,9 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h2 class="card__title">${new_s.name}</h2>
                             <p class="card__description">${new_s.description}</p>
                             ${new_s.permissions ? ` <button class="btn-borrar" data-id="${new_s.id}">Borrar</button>
-                                                    <a href="handlers/edit_news.php">
-                                                        <button class="btn-editar" data-id="${new_s.id}">Editar</button>
-                                                    </a>`  : ''}
+                                                    <button class="btn-editar" data-id="${new_s.id}">Editar</button>`: ''}
                         </div>`
                     ).join('');
 
@@ -72,4 +70,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    let modal = document.getElementById('mainModal')
+    const openModal = () => {
+        modal.showModal();
+    }
+    const closeModal = () => {
+        modal.close()
+    }
+    document.querySelector('.cerrar-modal').addEventListener('click', function () {
+        closeModal();
+    })
+    document.addEventListener('click', function (e) {
+        if(e.target.classList.contains('btn-editar')){
+            const id = e.target.getAttribute('data-id');
+            document.getElementById('id').value=id;
+            openModal();
+        }
+    })
 })  

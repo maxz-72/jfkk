@@ -30,25 +30,11 @@
     
         if($stmt->execute()){
             $message = 'Noticia actualizada correctamente';
+            header('Location: ../foro.php');
+            exit();
         }else{
             $message = 'Lo siento, hubo un problema al actualizar la noticia';
         }
     }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="edit_news.php" method="post">
-        <input type="number" name="id">
-        <input type="text" name="name">
-        <input type="text" name="description">
-        <input type="submit">
-    </form>
-</body>
-</html>

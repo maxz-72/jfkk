@@ -122,7 +122,19 @@
         </div>
     </nav>
 
-    <div class="notice__container"></div>
+    <dialog id="mainModal">
+        <button class="cerrar-modal">x</button>
+        <form action="handlers/edit_news.php" method="post">
+            <label for="id"></label>
+            <input type="number" name="id" id="id" readonly="readonly">
+            <label for="name"></label>
+            <input type="text" name="name">
+            <label for="description"></label>
+            <textarea name="description" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="Actualizar datos">
+        </form>
+    </dialog>
+    <div class="notice__container"></div>                         
 
     <script src="script.js"></script>
     <script src="../../js/header.js"></script>
