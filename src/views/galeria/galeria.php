@@ -17,11 +17,11 @@ if (isset($_SESSION['user_id'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>John Fitzgerald Kennedy | Galería</title>
+    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../styles/footer.css">
     <link rel="stylesheet" href="../../styles/header.css">
@@ -30,7 +30,6 @@ if (isset($_SESSION['user_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-
 <body>
     <header>
         <nav class="navbar .navbar-expand-lg. fixed-top s">
@@ -49,7 +48,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i
+                                <a class="nav-link active" aria-current="page" href="../../../index.php"><i
                                         class="bi bi-house bi-ul-r"></i>Inicio</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -77,17 +76,32 @@ if (isset($_SESSION['user_id'])) {
                                         class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i
+                                <a class="nav-link active" aria-current="page" href="../foro/foro.php"><i class="bi bi-chat-left-dots bi-ul-r">Foro</i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r">Biblioteca</i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="galeria.php"><i
                                         class="bi bi-camera bi-ul-r"></i>Galería</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i
+                                <a class="nav-link active" aria-current="page" href="../historia/historia.php"><i
                                         class="bi bi-bank bi-ul-r"></i>Historia</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#"><i
                                         class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a>
                             </li>
+                            <?php if (!empty($user)): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="../admin/panel.php">Panel de administrador</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="../login/login.php"><i class="bi bi-info-circle"></i></a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +109,7 @@ if (isset($_SESSION['user_id'])) {
         </nav>
         <div class="menu">
             <ul>
-                <li><a href="#"><i class="bi bi-house bi-ul-r"></i>Inicio</a></li>
+                <li><a href="../../../index.php"><i class="bi bi-house bi-ul-r"></i>Inicio</a></li>
                 <li class="specialties"><a href="#" class="toggle-icon"><i
                             class="bi bi-caret-down bi-ul-r"></i>Especialidades</a>
                     <ul class="submenu animate__animated animate__fadeIn">
@@ -105,26 +119,24 @@ if (isset($_SESSION['user_id'])) {
                     </ul>
                 </li>
                 <li><a href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a></li>
-                <li><a href="foro.php"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
-                <li><a href="./src/views/biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a>
+                <li><a href="../foro/foro.php"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
+                <li><a href="../biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a>
                 </li>
                 <li class="school"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Escuela</a>
                     <ul class="submenu animate__animated animate__fadeIn">
-                        <li><a href="#"><i class="bi bi-camera bi-ul-r"></i>Galería</a></li>
-                        <li><a href="#"><i class="bi bi-bank bi-ul-r"></i>Historia</a></li>
+                        <li><a href="galeria.php"><i class="bi bi-camera bi-ul-r"></i>Galería</a></li>
+                        <li><a href="../historia/historia.php"><i class="bi bi-bank bi-ul-r"></i>Historia</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a></li>
                 <?php if (!empty($user)): ?>
                     <li><a href="../admin/panel.php">Panel de administrador</a></li>
                 <?php else: ?>
-                    <li><a href="../login/login.php"><i class="bi bi-info-circle"></i></a>
-                    <?php endif; ?>
-                </li>
+                    <li><a href="../login/login.php"><i class="bi bi-info-circle"></i></a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </header>
-
     <p class="heading">CSS Gallery</p>
     <div class="gallery-image">
         <a href="imagenes/img (1).jpg" data-fancybox="gallery" data-caption="Taller de Electromecánica">

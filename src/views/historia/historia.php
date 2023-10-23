@@ -21,13 +21,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../styles/footer.css">
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <title>JFK - Historia</title>
+    <title>John Fitzgerald Kennedy | Historia</title>
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
                     <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house bi-ul-r"></i>Inicio</a>
+                                    <a class="nav-link active" aria-current="page" href="../../../index.php"><i class="bi bi-house bi-ul-r"></i>Inicio</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down bi-ul-r"></i>
@@ -59,21 +60,36 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="./src/views/Biblioteca/biblioteca.html"><i class="bi bi-laptop bi-ul-r"></i>Programación</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-laptop bi-ul-r"></i>Programación</a></li>
                                     </ul>
                                 </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-camera bi-ul-r"></i>Galería</a>
+                                <a class="nav-link active" aria-current="page" href="../foro/foro.php"><i class="bi bi-chat-left-dots bi-ul-r">Foro</i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-bank bi-ul-r"></i>Historia</a>
+                                <a class="nav-link active" aria-current="page" href="../biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r">Biblioteca</i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../galeria/galeria.php"><i class="bi bi-camera bi-ul-r"></i>Galería</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="galeria.php"><i class="bi bi-bank bi-ul-r"></i>Historia</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a>
                             </li>
+                            <?php if (!empty($user)): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="../admin/panel.php">Panel de administrador</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="../login/login.php"><i class="bi bi-info-circle"></i></a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +97,7 @@
         </nav>
         <div class="menu">
             <ul>
-                <li><a href="#"><i class="bi bi-house bi-ul-r"></i>Inicio</a></li>
+                <li><a href="../../../index.php"><i class="bi bi-house bi-ul-r"></i>Inicio</a></li>
                 <li class="specialties"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Especialidades</a>
                     <ul class="submenu animate__animated animate__fadeIn">
                         <li><a href="#"><i class="bi bi-gear bi-ul-r"></i>Electromecánica</a></li>
@@ -90,21 +106,20 @@
                     </ul>
                 </li>
                 <li><a href="#"><i class="bi bi-file-earmark-text bi-ul-r"></i>Inscripción</a></li>
-                <li><a href="foro.php"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
-                <li><a href="./src/views/biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a></li>
+                <li><a href="../foro/foro.php"><i class="bi bi-chat-left-dots bi-ul-r"></i>Foro</a></li>
+                <li><a href="../biblioteca/biblioteca.php"><i class="bi bi-archive bi-ul-r"></i>Biblioteca</a></li>
                 <li class="school"><a href="#" class="toggle-icon"><i class="bi bi-caret-down bi-ul-r"></i>Escuela</a>
                     <ul class="submenu animate__animated animate__fadeIn">
-                        <li><a href="#"><i class="bi bi-camera bi-ul-r"></i>Galería</a></li>
-                        <li><a href="#"><i class="bi bi-bank bi-ul-r"></i>Historia</a></li>
+                        <li><a href="../galeria/galeria.php"><i class="bi bi-camera bi-ul-r"></i>Galería</a></li>
+                        <li><a href="historia.php"><i class="bi bi-bank bi-ul-r"></i>Historia</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="bi bi-envelope-paper bi-ul-r"></i>Contacto</a></li>
-                    <?php if(!empty($user)): ?>
-                        <li><a href="../admin/panel.php">Panel de administrador</a></li>
-                    <?php else: ?>
-                        <li><a href="../login/login.php"><i class="bi bi-info-circle"></i></a>
-                    <?php endif; ?>
-                </li>
+                <?php if(!empty($user)): ?>
+                    <li><a href="../admin/panel.php">Panel de administrador</a></li>
+                <?php else: ?>
+                    <li><a href="../login/login.php"><i class="bi bi-info-circle"></i></a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </header>

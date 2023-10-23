@@ -66,17 +66,23 @@
                         </a>
                     </li>
                     <li class="list">
-                        <a href="handle_pdf.php" class="nav-link">
+                        <a href="../pdf_handle/handle_pdf.php" class="nav-link">
                             <i class='bx bx-file-blank icon'></i>
                             <span class="link">Pdfs</span>
                         </a>
                     </li>
                     <li class="list">
-                        <a href="#" class="nav-link">
+                        <a href="forum_handle.php" class="nav-link">
                             <i class='bx bx-chat icon'></i>
                             <span class="link">Foro</span>
                         </a>
                     </li>
+                    <li class="list">
+                        <a href="../users_handle/users_handle.php" class="nav-link">
+                            <i class='bx bx-cylinder icon'></i>
+                            <span class="link">Crear usuario</span>
+                        </a>
+                    </li>                                                                              
                 </ul>
                 <div class="bottom-cotent">
                     <li class="list">
