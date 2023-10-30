@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css?family=Cardo|Pathway+Gothic+One");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+@font-face {
+  font-family: 'GT-america';
+  src: url('fuente/GT-America-Condensed-Regular-Trial.otf') format('opentype');
+}
+
+/* Estilo para el contenedor principal de la línea de tiempo */
+
+.timeline {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 1100px;
+  position: relative;
+}
+/* Estilo para el título de cada elemento de la línea de tiempo */
+
+.timeline__content-title {
+  font-weight: normal;
+  font-size: 66px;
+  margin: -10px 0 0 0;
+  transition: 0.4s;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-family: "Pathway Gothic One", sans-serif;
+  color: #000000;
+  text-shadow: 1px 1px 6px #dbdbdb94;
+}
+/* Estilo para la descripción de cada elemento de la línea de tiempo */
+.timeline__content-desc {
+  margin: 0;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+  line-height: 25px;
+}
+/* Línea vertical que separa los elementos de la línea de tiempo */
+.timeline:before {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  margin-left: -1px;
+  content: "";
+  background: rgba(0, 0, 0, 0.3);
+}
+@media only screen and (max-width: 767px) {
+  .timeline:before {
+    left: 40px;
+  }
+}
+/* Estilo para cada elemento de la línea de tiempo */
+
+.timeline-item {
+  padding: 40px 0;
+  opacity: 0.3;
+  filter: blur(2px);
+  transition: 0.5s;
+  box-sizing: border-box;
+  width: calc(50% - 40px);
+  display: flex;
+  position: relative;
+  transform: translateY(-80px);
+}
+/* Estilo para el texto que aparece al lado de cada elemento de la línea de tiempo */
+
+.timeline-item:before {
+  content: attr(data-text);
+  letter-spacing: 3px;
+  width: 100%;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 13px;
+  font-family: "Pathway Gothic One", sans-serif;
+  border-left: 2px solid rgba(0, 0, 0, 0.5);
+  top: 70%;
+  margin-top: -5px;
+  padding-left: 15px;
+  opacity: 0;
+  right: calc(-100% - 56px);
+}
+/* Estilo para elementos de la línea de tiempo con índice par (derecha) */
+.timeline-item:nth-child(even) {
+  align-self: flex-end;
+}
+/* Estilo para el texto de elementos de la línea de tiempo con índice par */
+.timeline-item:nth-child(even):before {
+  right: auto;
+  text-align: right;
+  left: calc(-100% - 56px);
+  padding-left: 0;
+  border-left: none;
+  border-right: 2px solid rgba(0, 0, 0, 0.5);
+  padding-right: 15px;
+}
+
+/* Estilo para elementos de la línea de tiempo activos (visibles) */
+
+.timeline-item--active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+/* Estilo para el texto de elementos de la línea de tiempo activos */
+.timeline-item--active:before {
+  top: 50%;
+  transition: 0.3s all 0.2s;
+  opacity: 1;
+  font-size: 25px;
+}
+.timeline-item--active .timeline__content-title {
+  margin: -50px 0 20px 0;
+}
+@media only screen and (max-width: 767px) {
+  .timeline-item {
+    align-self: baseline !important;
+    width: 100%;
+    padding: 0 30px 150px 80px;
+  }
+  .timeline-item:before {
+    left: 10px !important;
+    padding: 0 !important;
+    top: 50px;
+    text-align: center !important;
+    width: 60px;
+    font-size: 13px;
+    border: none !important;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 40px;
+  }
+}
+/* Estilo para las imágenes de los elementos de la línea de tiempo */
+.timeline__img {
+  max-width: 100%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+/* Estilo para el contenedor principal de la línea de tiempo */
+.timeline-container {
+  width: 100%;
+  position: relative;
+  padding: 80px 0;
+  transition: 0.3s ease 0s;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.timeline-container:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+/* Estilo para el encabezado de la línea de tiempo */
+.timeline-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+.timeline-header__title {
+  color: #000000;
+  font-size: 46px;
+  font-family: Cardo;
+  font-weight: normal;
+  margin: 0;
+}
+.timeline-header__subtitle {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: 16px;
+  letter-spacing: 5px;
+  margin: 10px 0 0 0;
+  font-weight: normal;
+}
+
+/*------------LINK DE HISTORIA EM PDF---------*/
+.cont-pdf{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+.cont-pdf p{
+  text-align: center;
+}
+.cont-pdf a{
+  text-decoration: none;
+  color: rgb(240, 46, 40);
+}
+.cont-pdf a:hover{
+  border-bottom: 2px solid rgb(240, 46, 40);
+}

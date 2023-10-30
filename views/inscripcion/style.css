@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css?family=Cardo|Pathway+Gothic+One");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+@font-face {
+  font-family: 'GT-america';
+  src: url('fuente/GT-America-Condensed-Regular-Trial.otf') format('opentype');
+}
+
+.containerr{
+  padding-top: 80px;
+  font-family: 'Poppins', sans-serif;
+}
+.containerr h2{
+  text-align: center;
+  padding: 20px;
+}
+.p1{
+    
+    color: #050505;
+    }
+p{
+   margin: 10px 50px;
+   line-height: 1.5;
+   font-size: 17px;
+   text-align: justify;
+}
+.docum{
+   margin: 40px 0;
+}
+ .docum__a{
+    border: 1PX solid #000000;
+    padding: 15px;
+    border-radius: 4px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #000000;
+    transition: .5s ease;
+    margin-bottom: 100px;
+  }
+  .docum__a:hover{
+    color: #1b76fd;
+    border: 1PX solid #1b76fd;
+    background-color: #f3f4f4;
+  }
+  @media (max-width: 575px){
+    .docum__a{
+      padding: 15px;
+      font-size: 15px;
+    }
+  }
+/*----------LISTAS---------*/
+.ul{
+  margin: 0 50px;
+}
+.ul li{
+  color: #050505;
+  font-size: 17px;
+  padding: 7px 10px;
+  margin: 0 30px;
+}
+/*----RESPONSIVE TITULOS-------*/
+  @media (max-width: 768px) {
+    .title-tec{
+      font-size: 30px;
+      margin: 10px;
+      padding-left: 0;
+      text-align: center;
+    } 
+  }
+  @media (max-width: 915px) {
+    .title-tec{
+      margin-left: 70px;
+      margin-right: 70px;
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+  .title-h3{
+    text-align: center;
+    margin: 5px;
+    font-weight: 500;
+    font-size: 45px;
+  }
+  

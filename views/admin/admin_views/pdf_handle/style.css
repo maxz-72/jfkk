@@ -1,0 +1,19 @@
+.form__container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    display: flex;
+    padding: 50px;
+}
+label,input{
+    display: block;
+    width: 100%;
+}
+input{
+    margin-bottom: 40px;
+    padding: 5px;
+    border: 1px solid #707070;
+    outline: none;
+}
